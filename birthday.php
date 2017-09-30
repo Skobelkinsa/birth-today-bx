@@ -39,7 +39,6 @@ for ($i=0; $i <= $daysAfter ; $i++) {
     $filter = Array
     (
         "ACTIVE" => "Y",
-        "ID" => 1,
         "PERSONAL_BIRTHDAY_DATE"=> $tmpDate
     );
     $rsUsers = CUser::GetList(
@@ -68,7 +67,6 @@ foreach ($arResult as $days):
             $active_to = \Bitrix\Main\Type\DateTime::createFromTimestamp(strtotime("+7 day",mktime(0, 0, 0, explode('.', $day["PERSONAL_BIRTHDAY"])[1], explode('.', $day["PERSONAL_BIRTHDAY"])[0], date("Y"))));
             $coupon = Internals\DiscountCouponTable::generateCoupon(true);
 
-            $arCouponFields["COUNT"] = 1;
             $arCouponFields["COUPON"] = array(
                 "COUPON" => $coupon,
                 "DISCOUNT_ID" => (int) "37",
